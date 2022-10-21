@@ -11,7 +11,9 @@ const Title = ({title}) => {
 
 const styles = StyleSheet.create({
   text:{
+    textAlign:'center',
     fontSize:20,
+    marginTop:20,
     marginBottom:20
   }
 })

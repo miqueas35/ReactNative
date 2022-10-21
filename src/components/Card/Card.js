@@ -5,7 +5,7 @@ const Card = (props) => {
     return(
         <View style={styles.card}>
             <Text style={styles.titleCard}>{props.name}</Text>
-            <Image source={{ uri: props.image }} style={props.image}/>
+            <Image source={{ uri: props.uri }} style={styles.image}/>
             <Text style={styles.priceCard}>Precio: ${props.price * 1003}</Text>
         </View>
     )
@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 350,
         border: '1px solid black',
+        borderWidth: 1,
         marginBottom: 20
       },
       titleCard: {
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
       image: {
         height: '70%',
         maxWidth: '100%',
-        maxHeight: '70%',
+        maxHeight: '100%',
         marginHorizontal: 15
       },
       priceCard: {

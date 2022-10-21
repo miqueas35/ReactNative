@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { StyleSheet, View,} from 'react-native';
+import { StyleSheet, View, ScrollView} from 'react-native';
 import { Card } from './src/components/Card';
 import { Title } from './src/components/Title';
 
@@ -18,7 +18,7 @@ const App = () => {
   }, [])
   
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Title title='React Avanzado'/>
       {
         products.map(product => (
@@ -27,7 +27,7 @@ const App = () => {
           </View>
         ))
       }
-    </View> 
+    </ScrollView> 
   );
 } 
   
