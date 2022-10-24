@@ -1,36 +1,9 @@
-import { useEffect, useState } from 'react';
-import { StyleSheet, ScrollView } from 'react-native';
-import { Card } from './src/components/Card';
-import { Title } from './src/components/Title';
+import { Home } from "./src/screens/Home";
 
 const App = () => {
-  const [products, setProducts] = useState([]);
-
-  const getProduct = async () => {
-    const response = await fetch('https://rickandmortyapi.com/api/character');
-    const { results } = await response.json();
-    setProducts(results);
-  };
-
-  useEffect(() => {
-    getProduct();
-  }, []);
-
   return (
-    <ScrollView style={styles.container}>
-      <Title title='React Avanzado' />
-      {products.map((product) => (
-        <Card {...product} key={product.id} />
-      ))}
-    </ScrollView>
+    <Home/>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#fff',
-    padding: 20,
-  },
-});
 
 export default App;
