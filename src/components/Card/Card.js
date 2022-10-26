@@ -1,20 +1,48 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { Button, Card, Paragraph } from 'react-native-paper';
+import { useNavigation } from '@react-navigation/native';
 
-const Card = ({ name, species, image, id }) => {
+
+const RNCard = ({ name, species, image, id }) => {
+
+  const navigation = useNavigation();
+  const onGoinTo = () => {
+    navigation.navigate('Cart', {
+      name,
+      id,
+      image,
+      species
+    })
+  }
+
   return (
-    <View style={styles.card}>
+    <>
+    <Card style={styles.card}>
+      <Card.Title title={name} subtitle={species} />
+      <Card.Cover source={{ uri: image }} />
+      <Card.Content>
+        <Paragraph>Precio: ${Math.floor(Math.random() * 1000 )}</Paragraph>
+      </Card.Content>
+      <Card.Actions>
+        <Button onPress={onGoinTo}>Agregar al carrito</Button>
+        <Button onPress={() => navigation.navigate('Product detail')}>Comprar</Button>
+      </Card.Actions>
+    </Card>
+      {/* <View style={styles.card}>
       <View style={styles.containerTitle}>
         <Text style={styles.titleCard}>{name}</Text>
         <Text style={styles.speciesCard}>{species}</Text>
       </View>
       <Image source={{ uri: image }} style={styles.image} />
       <Text style={styles.priceCard}>Precio: ${id * 1003}</Text>
-    </View>
+    </View> */}
+    </>
+    
   );
 };
 
-const styles = StyleSheet.create({
+/* const styles = StyleSheet.create({
   card: {
     width: '100%',
     height: 350,
@@ -45,6 +73,12 @@ const styles = StyleSheet.create({
     fontWeight: '900',
     marginTop: 15,
   },
-});
+}); */
 
-export default Card;
+const styles = StyleSheet.create({
+  card: {
+    marginBottom: 25
+  }
+})
+
+export default RNCard;

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useEffect, useState } from 'react';
-import { StyleSheet, ScrollView, Button } from 'react-native';
+import { StyleSheet, ScrollView } from 'react-native';
 import { Card } from '../../components/Card';
 import { Title } from '../../components/Title';
 
@@ -15,9 +15,7 @@ const Home = ({ navigation }) => {
         setProducts(results);
   };
 
-  const handleNavigate = () => {
-    navigation.navigate('Product Detail')
-  };
+
 
   useEffect(() => {
     getProduct();
@@ -26,11 +24,6 @@ const Home = ({ navigation }) => {
     return (
     <ScrollView style={styles.container}>
       <Title title='React Avanzado' />
-      <Button
-        onPress={handleNavigate}
-        title="Learn More"
-        color="#841584"
-      />
       {products.map((product) => (
         <Card {...product} key={product.id} />
       ))}
